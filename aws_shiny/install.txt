@@ -1,0 +1,9 @@
+www-browser: not found
+/usr/bin/xdg-open: 771: /usr/bin/xdg-open: links2: not found
+/usr/bin/xdg-open: 771: /usr/bin/xdg-open: elinks: not found
+/usr/bin/xdg-open: 771: /usr/bin/xdg-open: links: not found
+/usr/bin/xdg-open: 771: /usr/bin/xdg-open: lynx: not found
+
+R -e "shiny::runApp('/srv/shiny-server/test_app')"
+
+C:\Users\Root\AppData\Local\Temp\RtmpgjMOTc\downloaded_packages\shiny_1.0.3\shiny
