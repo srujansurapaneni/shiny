@@ -1,3 +1,16 @@
 1. when you update the data feed/datasets for the app, a full stop and restart of shiny-server is required. 
 2. code ksh/other to look for the timestap of data feeds and datasets and run the stop and restart scripts
 3. 
+
+
+ALGORITHM FLOW:
+---------------
+1. identify stopwords
+2. define regex
+3. convert all stop words to an array
+4. split a string into an array based on sentences based on sentence ending with ./?/! or other punctuations and convert all to lower case
+5. make a list of words other than stopwords and their counts (number of times they appear)
+6. based on 5, rank the top "10"
+7. Based on 5, look in 4 and tag/attach ranks from 6 to sentences in 4
+8. use fuzzy match to compare all the sentences obtained in 7 and delete if any redundancies
+9. 
