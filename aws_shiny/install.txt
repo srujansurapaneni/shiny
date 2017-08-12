@@ -6,8 +6,21 @@ www-browser: not found
 
 with in R console
 install packages
-algorithmia
-
+install.packages('algorithmia')
+install.packages('lexRankr')
+install.packages('lsa')
+install.packages('plyr')
+install.packages('dplyr')
+install.packages('data.table')
+install.packages('Matrix')
+install.packages('stringr')
+install.packages('syuzhet')
+install.packages('tm')
+install.packages('openNLP')
+install.packages('openNLP')
+install.packages('rvest')
+install.packages('Rfacebook')
+install.packages('doParallel')
 
 R -e "shiny::runApp('/srv/shiny-server/test_app')"
 
