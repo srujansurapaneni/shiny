@@ -10,7 +10,7 @@ server <- function(input, output) {
   
                              #Start to summarize the input text here  
                              
-                            b="hellothere"
+                            b <- input$caption
                             system2('py',args=c('summry.py',b),stdout=TRUE)
                              
     
