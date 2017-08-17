@@ -113,7 +113,19 @@ def main():
     str_input = " ".join(str(x) for x in user_input)
     title = " Your Summary : "
 
-    content = """ %s """ % str_input
+    #content = """ %s """ % str_input
+    content = """ In the history of artificial intelligence, an AI winter is a period of reduced funding and interest in artificial intelligence research.
+    The term was coined by analogy to the idea of a nuclear winter.
+    The field has experienced several hype cycles, followed by disappointment and criticism, followed by funding cuts, followed by renewed interest years or decades later.
+    The term first appeared in 1984 as the topic of a public debate at the annual meeting of AAAI then called the American Association of Artificial Intelligence.
+    It is a chain reaction that begins with pessimism in the AI community, followed by pessimism in the press, followed by a severe cutback in funding, followed by the end of serious research.
+    At the meeting, Roger Schank and Marvin Minsky two leading AI researchers who had survived the winter of the 1970s warned the business community that enthusiasm for AI had spiraled out of control in the 80s and that disappointment would certainly follow.
+    Three years later, the billion-dollar AI industry began to collapse. Hypes are common in many emerging technologies, such as the railway mania or the dot-com bubble.
+    An AI winter is primarily a collapse in the perception of AI by government bureaucrats and venture capitalists. Despite the rise and fall of AI's reputation, it has continued to develop new and successful technologies.
+    AI researcher Rodney Brooks would complain in 2002 that there's this stupid myth out there that AI has failed, but AI is around you every second of the day.In 2005, Ray Kurzweil agreed:
+    Many observers still think that the AI winter was the end of the story and that nothing since has come of the AI field.
+    Yet today many thousands of AI applications are deeply embedded in the infrastructure of every industry.
+    He added the AI winter is long since over """
 
     # Create a SummaryTool object
     st = SummaryTool()

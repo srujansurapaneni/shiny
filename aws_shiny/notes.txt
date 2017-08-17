@@ -13,4 +13,5 @@ ALGORITHM FLOW:
 6. based on 5, rank the top "10"
 7. Based on 5, look in 4 and tag/attach ranks from 6 to sentences in 4
 8. use fuzzy match to compare all the sentences obtained in 7 and delete if any redundancies
-9. 
+9. remove extra spaces from the input text
+10. after summarization, include a paraphrasing algorithm
