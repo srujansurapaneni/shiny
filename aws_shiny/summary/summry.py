@@ -137,7 +137,7 @@ def main():
     summary = st.get_summary(title, content, sentences_dic)
 
     # Print the summary
-    print summary
+    print (summary)
 
     # Print the ratio between the summary length and the original length
     #print ""
@@ -196,7 +196,7 @@ def main():
                    all will with his which even at one an there about these us have where like just up them through been most also any widely"""
     # convert stopwords to an array for future processing
     stopWordsArray=stopwords.split(' ')
-    print stopWordsArray
+    print (stopWordsArray)
 
 
 if __name__ == '__main__':
