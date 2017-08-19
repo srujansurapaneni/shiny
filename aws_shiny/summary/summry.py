@@ -1,6 +1,7 @@
 from __future__ import division
 import re
 import sys
+import counter
 
 b = sys.argv[1:]
 
@@ -145,9 +146,11 @@ def main():
     #print "Summary Length %s" % len(summary)
     #print "Summary Ratio: %s" % (100 - (100 * (len(summary) / (len(title) + len(content)))))
 
+#-----------------------------------------------------------------------------------------------#
+
     #All custom functions - newly developed code : Srujan Surapaneni - 08/17/2017
     # define stopwords
-    stopwords = """to into a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't
+    stopwords = """ ~ ` ! @ # $ % ^ & * ( ) _ + - = [ ] \ ; ' , . / { } : " < > ?  to into a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't
                    did didn't do does doesn't doing don't down during each few for from further had hadn't has hasn't have haven't having he he'd he'll he's her here here's hers
                    herself him himself his how how's i i'd i'll i'm i've if in into is isn't it it's its itself let's me more most mustn't my myself no nor not of off on once only
                    or other ought our ours ourselves out over own same shan't she she'd she'll she's should shouldn't so some such than that that's the their theirs them themselves
@@ -194,9 +197,18 @@ def main():
                    while whither who who's whoever whole whom whose why will willing wish with within without won't wonder would wouldn't yes yet you you'd you'll you're you've your yours
                    yourself yourselves zero and or if of for the a as to is that in then you so as on our it your its more but objects can are when from by we be this that has had in to into
                    all will with his which even at one an there about these us have where like just up them through been most also any widely and popularily"""
+
     # convert stopwords to an array for future processing
     stopWordsArray=stopwords.split(' ')
     print stopWordsArray
+
+    # --- clean the input text to make it stop-words free --- #
+    # . split the input content first, you can include this in the iterable section of lambda function
+
+    clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
+    print clean_content
+
+    word_count = counter(clean_content.split())
 
 
 if __name__ == '__main__':
