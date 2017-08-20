@@ -200,7 +200,7 @@ def main():
                    we'll we're we've welcome well went were weren't what what's whatever when whence whenever where where's whereafter whereas whereby wherein whereupon wherever whether which
                    while whither who who's whoever whole whom whose why will willing wish with within without won't wonder would wouldn't yes yet you you'd you'll you're you've your yours
                    yourself yourselves zero and or if of for the a as to is that in then you so as on our it your its more but objects can are when from by we be this that has had in to into
-                   all will with his which even at one an there about these us have where like just up them through been most also any widely and popularily"""
+                   all will with his which even at one an there about these us have where like a just up them through been most also any widely and popularily"""
 
     # Create a SummaryTool object
     st = SummaryTool()
