@@ -1,7 +1,7 @@
 from __future__ import division
 import re
 import sys
-import counter
+from collections import Counter
 
 b = sys.argv[1:]
 
@@ -10,8 +10,34 @@ class SummaryTool(object):
     # Naive method for splitting a text into sentences
     def split_content_to_sentences(self, content):
         content = content.replace("\n", ". ")
-        return content.split(". ")
+        sentences = content.split(". ;,!? ")
+        return sentences
 
+    # Naive method for splitting stopwords into array
+    def split_stopwords(self, stopwords):
+        return stopwords.split(" ")
+
+    def content_clean(self,stopwords,content):
+        clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
+        content_array = clean_content.split()
+        word_count = Counter(content_array)
+        most_common = word_count.most_common(5)
+        return most_common
+
+    def get_correct_summary(self,title,most_common,sentences):
+
+        # Add the title
+        summary = []
+        summary.append(title.strip())
+        summary.append("")
+
+        for s in sentences:
+            sentence_words = re.split('. ;,!?',s)
+            if (set(most_common) & set(sentence_words)):
+                summary.append(sentences)
+        return ("\n").join(summary)
+
+    #-------------------------------------------------------#
     # Naive method for splitting a text into paragraphs
     def split_content_to_paragraphs(self, content):
         return content.split("\n\n")
@@ -104,7 +130,6 @@ class SummaryTool(object):
 
         return ("\n").join(summary)
 
-
 # Main method, just run "python summary_tool.py"
 def main():
 
@@ -128,27 +153,6 @@ def main():
     Yet today many thousands of AI applications are deeply embedded in the infrastructure of every industry.
     He added the AI winter is long since over """
 
-    # Create a SummaryTool object
-    st = SummaryTool()
-
-    # Build the sentences dictionary
-    sentences_dic = st.get_sentences_ranks(content)
-
-    # Build the summary with the sentences dictionary
-    summary = st.get_summary(title, content, sentences_dic)
-
-    # Print the summary
-    print summary
-
-    # Print the ratio between the summary length and the original length
-    #print ""
-    #print "Original Length %s" % (len(title) + len(content))
-    #print "Summary Length %s" % len(summary)
-    #print "Summary Ratio: %s" % (100 - (100 * (len(summary) / (len(title) + len(content)))))
-
-#-----------------------------------------------------------------------------------------------#
-
-    #All custom functions - newly developed code : Srujan Surapaneni - 08/17/2017
     # define stopwords
     stopwords = """ ~ ` ! @ # $ % ^ & * ( ) _ + - = [ ] \ ; ' , . / { } : " < > ?  to into a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't
                    did didn't do does doesn't doing don't down during each few for from further had hadn't has hasn't have haven't having he he'd he'll he's her here here's hers
@@ -198,18 +202,17 @@ def main():
                    yourself yourselves zero and or if of for the a as to is that in then you so as on our it your its more but objects can are when from by we be this that has had in to into
                    all will with his which even at one an there about these us have where like just up them through been most also any widely and popularily"""
 
-    # convert stopwords to an array for future processing
-    stopWordsArray=stopwords.split(' ')
-    print stopWordsArray
+    # Create a SummaryTool object
+    st = SummaryTool()
 
-    # --- clean the input text to make it stop-words free --- #
-    # . split the input content first, you can include this in the iterable section of lambda function
+    # Build the sentences dictionary
+    sentences = st.split_content_to_sentences(content)
 
-    clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
-    print clean_content
+    # Build the summary with the sentences dictionary
+    summary = st.get_correct_summary(title, content, sentences)
 
-    word_count = counter(clean_content.split())
-
+    # Print the summary
+    print summary
 
 if __name__ == '__main__':
     main()
