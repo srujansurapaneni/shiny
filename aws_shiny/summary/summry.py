@@ -22,7 +22,7 @@ class SummaryTool(object):
         clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
         content_array = clean_content.split()
         word_count = Counter(content_array)
-        most_common = word_count.most_common(2)
+        most_common = word_count.most_common(3)
         imp_words = [num[0] for num in most_common]
         return imp_words
 
@@ -59,18 +59,7 @@ def main():
     title = "\n"+" Your Summary : "+"\n"
 
     #content = """ %s """ % str_input
-    content = """ In the history of artificial intelligence, an AI winter is a period of reduced funding and interest in artificial intelligence research.
-    The term was coined by analogy to the idea of a nuclear winter.
-    The field has experienced several hype cycles, followed by disappointment and criticism, followed by funding cuts, followed by renewed interest years or decades later.
-    The term first appeared in 1984 as the topic of a public debate at the annual meeting of AAAI then called the American Association of Artificial Intelligence.
-    It is a chain reaction that begins with pessimism in the AI community, followed by pessimism in the press, followed by a severe cutback in funding, followed by the end of serious research.
-    At the meeting, Roger Schank and Marvin Minsky two leading AI researchers who had survived the winter of the 1970s warned the business community that enthusiasm for AI had spiraled out of control in the 80s and that disappointment would certainly follow.
-    Three years later, the billion-dollar AI industry began to collapse. Hypes are common in many emerging technologies, such as the railway mania or the dot-com bubble.
-    An AI winter is primarily a collapse in the perception of AI by government bureaucrats and venture capitalists. Despite the rise and fall of AI's reputation, it has continued to develop new and successful technologies.
-    AI researcher Rodney Brooks would complain in 2002 that there's this stupid myth out there that AI has failed, but AI is around you every second of the day.In 2005, Ray Kurzweil agreed:
-    Many observers still think that the AI winter was the end of the story and that nothing since has come of the AI field.
-    Yet today many thousands of AI applications are deeply embedded in the infrastructure of every industry.
-    He added the AI winter is long since over """
+    content = """  """
     content = """ %s """ % str_input
     # define stopwords
     stopwords = """ ~ ` ! @ # $ % ^ & * ( ) _ + - = [ ] \ ; ' , . / { } : " < > ?  to into a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't
@@ -143,39 +132,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-"""
-from collections import Counter
-clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
-        content_array = clean_content.split()
-        word_count = Counter(content_array)
-        most_common = word_count.most_common(5)
-        imp_words = [num[0] for num in most_common]
-
-content = content.replace("\n", ". ")
-        sentences = [j.strip() for j in (content.split(". "))]
-
-test = sentences
-check = imp_words
-
-
-z=0
-summary = []
-for i in range(len(check)):
-    name = [s for s in test if check[z] in s]
-    print name
-    summary.append(name)
-    z=z+1
-final= [item for sublist in summary for item in sublist]
-counts = Counter(final)
-final_summary = counts.keys()
-your_summary = ' '.join(final_summary)
-
-
-extra code below (disregard)
-final1 = ', '.join([str(x) for x in summary])
-final2 = final1.replace("]","")
-final3 = final2.replace("[","")
-final4 = set([final3])
-final5 = list(final4)
-"""
