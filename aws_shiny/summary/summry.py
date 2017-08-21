@@ -155,7 +155,13 @@ for i in range(len(check)):
     print name
     summary.append(name)
     z=z+1
+final= [item for sublist in summary for item in sublist]
+counts = Counter(final)
+final_summary = counts.keys()
+your_summary = ' '.join(final_summary)
 
+
+extra code below (disregard)
 final1 = ', '.join([str(x) for x in summary])
 final2 = final1.replace("]","")
 final3 = final2.replace("[","")
