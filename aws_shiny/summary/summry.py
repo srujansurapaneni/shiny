@@ -1,4 +1,5 @@
 from __future__ import division
+from __future__ import print_function
 import re
 import sys
 from collections import Counter
@@ -21,7 +22,7 @@ class SummaryTool(object):
         clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
         content_array = clean_content.split()
         word_count = Counter(content_array)
-        most_common = word_count.most_common(5)
+        most_common = word_count.most_common(2)
         imp_words = [num[0] for num in most_common]
         return imp_words
 
@@ -32,20 +33,30 @@ class SummaryTool(object):
 
         # Add the title
         summary = []
-        summary.append(title.strip())
+        summary.append("\n"+title.strip())
         summary.append("")
+        summaryv1 = []
+        z=0
         sentences = self.split_content_to_sentences(content)
-        most_common = self.content_clean(stopwords,content)
-        return ' '.join(summary)
+        imp_words = self.content_clean(stopwords,content)
+        for i in range(len(imp_words)):
+            name = [s for s in sentences if imp_words[z] in s]
+            summaryv1.append(name)
+            z=z+1
+        final= [item for sublist in summaryv1 for item in sublist]
+        counts = Counter(final)
+        final_summary = counts.keys()
+        your_summary = ' '.join(final_summary)
+        summary = summary+final_summary
+        return ("\n").join(summary)
 
 # Main method, just run "python summary_tool.py"
 def main():
 
-    # Demo
-    # Content from: "http://thenextweb.com/apps/2013/03/21/swayy-discover-curate-content/"
+# --- Input and output --- #
     user_input = sys.argv[1:]
     str_input = " ".join(str(x) for x in user_input)
-    title = " Your Summary : "
+    title = "\n"+" Your Summary : "+"\n"
 
     #content = """ %s """ % str_input
     content = """ In the history of artificial intelligence, an AI winter is a period of reduced funding and interest in artificial intelligence research.
@@ -60,7 +71,7 @@ def main():
     Many observers still think that the AI winter was the end of the story and that nothing since has come of the AI field.
     Yet today many thousands of AI applications are deeply embedded in the infrastructure of every industry.
     He added the AI winter is long since over """
-
+    content = """ %s """ % str_input
     # define stopwords
     stopwords = """ ~ ` ! @ # $ % ^ & * ( ) _ + - = [ ] \ ; ' , . / { } : " < > ?  to into a about above after again against all am an and any are aren't as at be because been before being below between both but by can't cannot could couldn't
                    did didn't do does doesn't doing don't down during each few for from further had hadn't has hasn't have haven't having he he'd he'll he's her here here's hers
@@ -123,12 +134,12 @@ def main():
     summary = st.get_correct_summary(title, stopwords, content)
 
     # Print the most important keywords and their frequency, title and  summary
-    print "important keywords:"
-    print imp_words
+    print ("important keywords:")
+    print (imp_words,end='\n')
 
-    print "List of all sentences in the input:"
-    print sentences
-    print summary
+    #print "List of all sentences in the input:"
+    #print sentences
+    print ("\n"+summary)
 
 if __name__ == '__main__':
     main()
