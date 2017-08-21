@@ -132,3 +132,33 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+"""
+from collections import Counter
+clean_content = ' '.join(filter(lambda x: x.lower() not in stopwords, content.split()))
+        content_array = clean_content.split()
+        word_count = Counter(content_array)
+        most_common = word_count.most_common(5)
+        imp_words = [num[0] for num in most_common]
+
+content = content.replace("\n", ". ")
+        sentences = [j.strip() for j in (content.split(". "))]
+
+test = sentences
+check = imp_words
+
+
+z=0
+summary = []
+for i in range(len(check)):
+    name = [s for s in test if check[z] in s]
+    print name
+    summary.append(name)
+    z=z+1
+
+final1 = ', '.join([str(x) for x in summary])
+final2 = final1.replace("]","")
+final3 = final2.replace("[","")
+final4 = set([final3])
+final5 = list(final4)
+"""
