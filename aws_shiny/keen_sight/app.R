@@ -11,7 +11,7 @@ server <- function(input, output) {
                              #Start to summarize the input text here  
                              
                             b <- input$caption
-                            system2('py',args=c('keen_sight.py',b),stdout=TRUE)
+                            system2('py',args=c('keensight.py',b),stdout=TRUE)
                              
     
                              })
